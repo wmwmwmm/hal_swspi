@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --backend -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --backend -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
 
 @echo off 
 :end

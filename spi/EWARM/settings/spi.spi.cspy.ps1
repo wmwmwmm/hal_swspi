@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --backend -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --backend -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM\settings\spi.spi.driver.xcl" 
 }

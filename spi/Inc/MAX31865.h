@@ -5,6 +5,7 @@
 #include "stm32f1xx.h"
 #include "stm32f1xx_hal_conf.h"
 #include "system_stm32f1xx.h"
+#include "main.h"
 
 #define SDI_H HAL_GPIO_WritePin(GPIOC,GPIO_PIN_2,GPIO_PIN_SET)
 #define SDI_L HAL_GPIO_WritePin(GPIOC,GPIO_PIN_2,GPIO_PIN_RESET)

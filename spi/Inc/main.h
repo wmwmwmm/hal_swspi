@@ -44,7 +44,8 @@
 /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
-
+#define RTL 0
+extern unsigned char time_base_1khz;
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/

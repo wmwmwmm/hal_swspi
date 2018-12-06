@@ -91,6 +91,9 @@ float Get_tempture(uint8_t ncs)
   //data_temp=(dtemp0<<7)+(dtemp1>>1);//Get 15Bit DATA;
   temps=data_temp1+data_temp2;
   temps=(temps*430)/32768;//Here is the rtd R value;
+  if(RTL){
+    printf("RTL:%.3f  ",temps);
+  }
   temps=(temps-100)/0.385055;//A gruad
   return temps;
 }

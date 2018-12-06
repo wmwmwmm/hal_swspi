@@ -1,16 +1,16 @@
-"C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c"
+"C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c"
 -std=c11
 -ferror-limit=0
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM/../Inc
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM/../Inc
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\EWARM/../Drivers/CMSIS/Include
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\EWARM/../Drivers/CMSIS/Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include
 -I
@@ -18,15 +18,15 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc\c
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Inc
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Inc
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Inc
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Inc
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Drivers\CMSIS\Device\ST\STM32F1xx\Include
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 -I
-C:\Users\G\Desktop\code repo\temp repo\hal_swspi\spi\Drivers\CMSIS\Include
+C:\Users\G\Desktop\code repo\f3rc_spi\hal_swspi\spi\Drivers\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CMSIS\Include
 -D__CHAR_BITS__=8
