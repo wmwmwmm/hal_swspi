@@ -44,8 +44,11 @@
 /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
+//#include <stdio.h>
 #define RTL 0
-extern unsigned char time_base_1khz;
+extern unsigned int time_base_1khz;
+extern unsigned long int cap_val , cap_cnt;
+extern float motor_freq;
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/

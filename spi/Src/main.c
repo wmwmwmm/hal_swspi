@@ -46,6 +46,7 @@
 /* USER CODE BEGIN Includes */
 #include "max31865.h"
 #include <stdio.h>
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -53,7 +54,8 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 uint8_t Fault_Status,Fault_Status2;  
-float tempture  , tempture2;
+float tempture,tempture2, motor_freq;
+unsigned long int cap_val , cap_cnt;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -84,7 +86,8 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   uint8_t TxData[10]= {0x0,0x1,0x2,0x3,0x4,0x5,0x6,0x7,0x8,0x9};
-
+  float RPM = 0;
+  float RPM_cnt = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -107,13 +110,19 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_TIM2_Init();
+  MX_TIM3_Init();
 
   /* Initialize interrupts */
   MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_Base_Start_IT(&htim3);
+  
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
+  
+  HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_1);
+  
   MAX31865_SB_Write(0x80,0xc1,1);//MAX31865 init (50Hz filter)
   Delay(0x1ffff);
   MAX31865_SB_Write(0x80,0xc1,2);
@@ -139,12 +148,25 @@ int main(void)
       time_base_1khz = 0;
       //Delay(0x1ffff);
       tempture=Get_tempture(1);
-      printf("%.3f    ",tempture);
+      //printf("%.3f    ",tempture);
       //Delay(0x1ffff);
       tempture2=Get_tempture(2);
-      printf("%.3f\n",tempture2);
+     // printf("%.3f\n",tempture2);
       Fault_Status=MAX31865_SB_Read(0x07,1);//Get Fault_Status
       Fault_Status2=MAX31865_SB_Read(0x07,2);//Get Fault_Status
+      RPM_cnt = cap_cnt*30;// /20*10*60;
+      cap_cnt = 0;
+      printf("cnt:%.3f   ",RPM_cnt);
+      
+      
+      if(fabs(motor_freq/20*60 / RPM_cnt) > 2){
+        motor_freq = cap_val;
+      }
+      printf("freq:%.3f\n",motor_freq);
+      RPM = motor_freq / 20 * 60;
+      motor_freq = 0;
+      
+      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
     }
   }
   /* USER CODE END 3 */
@@ -210,6 +232,9 @@ static void MX_NVIC_Init(void)
   /* TIM2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(TIM2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(TIM2_IRQn);
+  /* TIM3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(TIM3_IRQn);
 }
 
 /* USER CODE BEGIN 4 */

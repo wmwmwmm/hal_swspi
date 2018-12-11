@@ -38,12 +38,13 @@
 /* USER CODE BEGIN 0 */
 #include "main.h"
 
-
-unsigned char time_base_1khz;
+unsigned char TIM3_overflow;
+unsigned int time_base_1khz;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim3;
 
 /******************************************************************************/
 /*            Cortex-M3 Processor Interruption and Exception Handlers         */ 
@@ -209,20 +210,63 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 1 */
 }
 
+/**
+* @brief This function handles TIM3 global interrupt.
+*/
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
 /* USER CODE BEGIN 1 */
 //TIM2中断回调
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    if(htim==(&htim2))
-    {
-      time_base_1khz++;
-      if(time_base_1khz == 50){
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);  
-        //time_base_1khz = 0;
-      }
+    if(htim==(&htim3)){
+      TIM3_overflow++;
+     // if(time_base_1khz == 50){
+
+      //}
       
     }
-}
+    
+    if(htim==(&htim2))
+    {     
+      time_base_1khz++;
+      //if(time_base_1khz == 50){
+        //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);  
+        //time_base_1khz = 0;
+      //}
+    }
 
+}
+//TIM3 捕获回调
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim){
+  static uint32_t cap_val_l,cap_val_p;
+  uint32_t diff_cap;
+  if ( htim->Instance == TIM3 ) {
+    //if(cap_flag_0 == 0
+    cap_val_l = cap_val_p;
+    cap_val_p = HAL_TIM_ReadCapturedValue(&htim3, TIM_CHANNEL_1);
+    //if(cap_val > cap_val_l){
+      diff_cap = cap_val_p + TIM3_overflow*0xffff - cap_val_l + 1;
+      cap_val = motor_freq;
+      motor_freq = 1000000 / (float)diff_cap;
+      TIM3_overflow = 0;
+    //}
+    //else 
+     // diff_cap = cap_val + TIM3_overflow*0xffff - cap_val_l;
+    //cap_val = cap_val_p - cap_val_l;
+    //cap_val_p = cap_val_l;
+    cap_cnt++;
+  }
+
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
